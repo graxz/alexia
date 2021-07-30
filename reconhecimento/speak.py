@@ -10,4 +10,4 @@ with sr.Microphone() as source:
         print("Aguardando conexão...")
         audio = recon.listen(source)
 
-        print(recon.recognize_sphinx(audio))
+        print(recon.recognize_google(audio, language='pt-BR'))
