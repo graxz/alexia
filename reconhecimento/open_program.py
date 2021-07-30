@@ -1,18 +1,26 @@
 import speech_recognition as sr
 import os
-import webbrowser
 
-print("Eai mano, quer abrir o zap ?")
+print("Eai mano, quer abrir oq ?")
 
 recon = sr.Recognizer()
-site = "https://web.whatsapp.com/"
+zap = "https://web.whatsapp.com/"
+google = "https://www.google.com.br/"
+youtube = "https://www.youtube.com/"
+facebook = "https://www.facebook.com/"
+
 
 with sr.Microphone() as source:
     audio = recon.listen(source)
-    aswer = recon.recognize_google(audio, language='pt-BR')
+    site = (recon.recognize_google(audio, language='pt-BR')).lower()
 
-    if aswer == "sim":
-        print("abrindo carai...")
-        os.system('start chrome {}'.format(site))
-    elif aswer == "não":
-        print("Tchau")
+    if site == "zap":
+        os.system('start chrome {}'.format(zap))
+    elif site == "google":
+        os.system('start chrome {}'.format(google))
+    elif site == "facebook":
+        os.system('start chrome {}'.format(facebook))
+    elif site == "youtube":
+        os.system('start chrome {}'.format(youtube))
+    elif site == "nada":
+        print("vai pra bosta entao")
